@@ -8,27 +8,37 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; position: relative; }
         
-        /* TOP-RIGHT CLOCK/CALENDAR/LOCATION */
+        /* ENHANCED HEADER PANEL - Same width as Contact */
         .header-panel { 
-            position: fixed; top: 1rem; right: 2rem; background: rgba(20,20,20,0.9); backdrop-filter: blur(20px); 
-            border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(0,255,136,0.3); z-index: 100; 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5); min-width: 220px; 
+            position: fixed; top: 1rem; right: 2rem; background: rgba(20,20,20,0.95); backdrop-filter: blur(25px); 
+            border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(0,255,136,0.4); z-index: 100; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6); min-width: 220px; text-align: center;
         }
-        .clock { font-size: 1.8rem; font-weight: 700; color: #00ff88; margin-bottom: 0.5rem; text-align: center; }
-        .date { font-size: 1rem; color: #ccc; margin-bottom: 0.8rem; }
-        .location { font-size: 0.9rem; color: #aaa; text-align: center; }
+        .clock { font-size: 1.9rem; font-weight: 800; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.3rem; }
+        .date { font-size: 1.1rem; color: #ccc; margin-bottom: 1rem; font-weight: 500; }
         
-        /* RIGHT CONTACT BUTTON */
+        /* MONTH CALENDAR */
+        .calendar { background: rgba(30,30,30,0.8); border-radius: 12px; padding: 1rem; margin-bottom: 0.8rem; border: 1px solid rgba(0,255,136,0.3); }
+        .calendar-header { font-weight: 700; color: #00ff88; margin-bottom: 0.5rem; font-size: 1rem; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 0.85rem; text-align: center; }
+        .calendar-day { padding: 0.3rem 0.1rem; border-radius: 4px; }
+        .calendar-day.today { background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; font-weight: 700; }
+        .calendar-day.other-month { color: #666; }
+        
+        .dream-text { font-size: 0.8rem; color: #00ff88; font-style: italic; font-weight: 500; letter-spacing: 0.5px; }
+        
+        /* STYLISH CONTACT PANEL - Matches header width */
         .contact-panel { 
-            position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: rgba(255,107,107,0.9); 
-            backdrop-filter: blur(20px); border-radius: 25px; padding: 1.5rem 1.2rem; border: 1px solid rgba(255,107,107,0.5); 
-            z-index: 100; box-shadow: 0 20px 50px rgba(255,107,107,0.3); cursor: pointer; transition: all 0.3s; width: 180px;
+            position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255,107,107,0.95), rgba(255,82,82,0.9)); 
+            backdrop-filter: blur(25px); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(255,107,107,0.6); 
+            z-index: 100; box-shadow: 0 25px 70px rgba(255,107,107,0.4); cursor: pointer; transition: all 0.4s; min-width: 220px; text-align: center;
         }
-        .contact-panel:hover { background: rgba(255,82,82,0.95); transform: translateY(-50%) translateX(-10px); box-shadow: 0 25px 60px rgba(255,107,107,0.5); }
-        .contact-icon { font-size: 2rem; display: block; text-align: center; margin-bottom: 0.5rem; }
-        .contact-text { font-size: 0.85rem; font-weight: 600; color: white; text-align: center; }
+        .contact-panel:hover { transform: translateY(-50%) translateX(-15px) scale(1.05); box-shadow: 0 35px 80px rgba(255,107,107,0.6); }
+        .contact-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+        .contact-text { font-size: 1rem; font-weight: 700; color: white; line-height: 1.3; }
+        .contact-subtext { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.9); margin-top: 0.2rem; }
         
-        /* WATERFALL (left side - unchanged) */
+        /* WATERFALL LEFT SIDE - FIXED GENDER MATCHING */
         .waterfall { position: fixed; left: 2rem; top: 20%; width: 280px; height: 70vh; overflow: hidden; z-index: 10; pointer-events: none; }
         .student-card { position: absolute; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); border-radius: 20px; padding: 1.2rem; width: 260px; box-shadow: 0 15px 50px rgba(0,255,136,0.3); border: 1px solid rgba(0,255,136,0.3); animation: floatDown linear infinite; }
         .student-avatar { width: 50px; height: 50px; border-radius: 50%; margin-bottom: 0.8rem; box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
@@ -41,10 +51,8 @@
         .student-card:nth-child(4) { animation: floatDown 28s linear infinite 12s; left: 20px; top: -250px; }
         @keyframes floatDown { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(80vh) rotate(5deg); opacity: 0; } }
         
-        /* Hero with adjusted padding */
+        /* Hero adjusted */
         .hero { min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 25rem 2rem 20rem; position: relative; }
-        
-        /* Your existing hero styles */
         .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(0,255,136,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,191,255,0.1) 0%, transparent 50%); animation: pulse 4s infinite; }
         @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
         h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; animation: glow 2s infinite alternate; }
@@ -58,57 +66,76 @@
         .cta { width: 100%; background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 1.2rem; font-size: 1.3rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 40px rgba(0,255,136,0.5); }
         .cta:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(0,255,136,0.7); }
         
-        /* SMALLER CONSOLE GRID - 3 PER ROW */
+        /* MATCHING CONSOLE SIZES FOR FEATURES */
         .consoles { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
         .consoles h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #fff; }
         .console-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 20rem; }
-        .console-item { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.7); background: #111; transition: transform 0.3s; }
+        .console-item { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.7); background: #111; transition: transform 0.3s; height: 220px; }
         .console-item:hover { transform: scale(1.05); }
-        .console-item img { width: 100%; height: 220px; object-fit: cover; display: block; }
+        .console-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .console-label { position: absolute; bottom: 0.5rem; left: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.85); padding: 0.8rem; border-radius: 10px; text-align: center; font-size: 0.9rem; }
         
-        /* Rest unchanged */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-        .consoles .console-item { animation: fadeInUp 0.8s ease-out forwards; }
-        .consoles .console-item:nth-child(2) { animation-delay: 0.1s; }
-        .consoles .console-item:nth-child(3) { animation-delay: 0.2s; }
+        /* FEATURES - SAME SIZE AS CONSOLES */
+        .features { padding: 4rem 2rem; background: rgba(0,0,0,0.4); }
+        .features h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #fff; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 20rem; max-width: 1400px; margin: 0 auto; }
+        .feature-item { background: rgba(30,30,30,0.9); border-radius: 16px; padding: 1.5rem; text-align: center; border: 1px solid rgba(0,255,136,0.3); height: 220px; display: flex; flex-direction: column; justify-content: center; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .feature-item:hover { transform: translateY(-10px); border-color: #00ff88; box-shadow: 0 20px 50px rgba(0,255,136,0.3); }
+        .feature-title { font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .feature-title.zero { color: #00ff88; }
+        .feature-title.ai { color: #00bfff; }
+        .feature-title.beta { color: #00ff88; }
+        
         footer { background: #0a0a0a; color: #888; text-align: center; padding: 3rem; border-top: 1px solid #222; }
         
-        @media (max-width: 1200px) { .console-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); padding: 0 2rem; } }
-        @media (max-width: 1024px) { .waterfall, .header-panel, .contact-panel { display: none; } .hero { padding: 2rem 2rem 2rem 2rem; } .console-grid { padding: 0 2rem; } }
-        @media (max-width: 768px) { .console-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1200px) { .console-grid, .features-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); padding: 0 2rem; } }
+        @media (max-width: 1024px) { .waterfall, .header-panel, .contact-panel { display: none; } .hero { padding: 2rem 2rem 2rem 2rem; } }
+        @media (max-width: 768px) { .console-grid, .features-grid { grid-template-columns: 1fr; } }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- TOP-RIGHT CLOCK/CALENDAR -->
+    <!-- ENHANCED HEADER WITH CALENDAR -->
     <div class="header-panel" id="clockPanel">
         <div class="clock" id="time"></div>
         <div class="date" id="date"></div>
-        <div class="location">📍 Riga, LV<br><span style="font-size: 0.8rem;">EET Timezone</span></div>
+        <div class="calendar" id="calendar"></div>
+        <div class="dream-text">"Remember this day - it's the start of your dream future"</div>
     </div>
 
-    <!-- RIGHT CONTACT PANEL -->
+    <!-- STYLISH CONTACT PANEL -->
     <div class="contact-panel" onclick="showContact()">
         <div class="contact-icon">💬</div>
-        <div class="contact-text">Contact Us<br><span style="font-size: 0.75rem; font-weight: 400;">We reply in 2h</span></div>
+        <div class="contact-text">Contact Us</div>
+        <div class="contact-subtext">We reply in 2 hours</div>
     </div>
 
-    <!-- WATERFALL (left side) -->
+    <!-- WATERFALL LEFT SIDE - FIXED GENDER MATCHING -->
     <div class="waterfall">
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Anna">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Anna">
             <div class="stars">⭐⭐⭐⭐⭐ 9.8/10</div>
             <div class="student-name">Anna (RTU)</div>
             <div class="student-quote">"Pabeidzu semestri bez stresa!"</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Jānis">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Jānis">
             <div class="stars">⭐⭐⭐⭐⭐ 9.5/10</div>
             <div class="student-name">Jānis (LU)</div>
             <div class="student-quote">"AI plānotājs mainīja manu dzīvi."</div>
         </div>
-        <!-- More cards... -->
+        <div class="student-card">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Līga">
+            <div class="stars">⭐⭐⭐⭐⭐ 10/10</div>
+            <div class="student-name">Līga (RSU)</div>
+            <div class="student-quote">"Perfekts studentiem Rīgā!"</div>
+        </div>
+        <div class="student-card">
+            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Marta">
+            <div class="stars">⭐⭐⭐⭐⭐ 9.7/10</div>
+            <div class="student-name">Marta (LLU)</div>
+            <div class="student-quote">"Nezaudēju ne vienu deadline."</div>
+        </div>
     </div>
 
     <!-- HERO SECTION -->
@@ -124,12 +151,12 @@
         <p style="color: #888; font-size: 0.9rem;">No credit card needed. Exclusive for students 18-25. Unsubscribe anytime.</p>
     </section>
     
-    <!-- 3-IN-A-ROW CONSOLES -->
+    <!-- CONSOLES - NEW DAILY DASHBOARD IMAGE -->
     <section class="consoles">
         <h2>See Your ChronoFocus Console</h2>
         <div class="console-grid">
             <div class="console-item">
-                <img src="https://images.unsplash.com/photo-1613466811575-c3b4e152694f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Daily Dashboard">
                 <div class="console-label"><strong>Daily Dashboard</strong><br>Tasks • Timer • Streaks</div>
             </div>
             <div class="console-item">
@@ -144,40 +171,58 @@
         <p style="text-align: center; margin-top: 3rem; color: #aaa;">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
     </section>
 
-    <!-- Features + Footer unchanged -->
-    <section class="features" style="padding: 6rem 2rem; background: rgba(0,0,0,0.4);">
-        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #fff;">Why Students Love It</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
-            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00ff88;">Zero Cost</h3><p>Free forever for verified students.</p>
+    <!-- MATCHING FEATURES SECTION -->
+    <section class="features">
+        <h2>Why Students Love It</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-title zero">Zero Cost</div>
+                <p>Free forever for verified students. Just email signup.</p>
             </div>
-            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00bfff;">AI Procrastination Buster</h3><p>Smart suggestions for assignments.</p>
+            <div class="feature-item">
+                <div class="feature-title ai">AI Procrastination Buster</div>
+                <p>Smart suggestions for your toughest assignments.</p>
             </div>
-            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00ff88;">Beta Exclusive</h3><p>Early access + shape the app.</p>
+            <div class="feature-item">
+                <div class="feature-title beta">Beta Exclusive</div>
+                <p>Early access + direct feedback to shape the app.</p>
             </div>
         </div>
     </section>
     
-    <footer style="background: #0a0a0a; color: #888; text-align: center; padding: 3rem; border-top: 1px solid #222;">
+    <footer>
         <p>&copy; 2026 ChronoFocus | Riga, LV | <a href="#" style="color: #00ff88;">Privacy</a> | Built for students by students</p>
     </footer>
 
     <script>
-        // LIVE CLOCK + DATE
+        // ENHANCED CLOCK + CALENDAR
         function updateClock() {
             const now = new Date();
             document.getElementById('time').textContent = now.toLocaleTimeString('lv-LV', {hour12: false, hour: '2-digit', minute: '2-digit'});
             document.getElementById('date').textContent = now.toLocaleDateString('lv-LV', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'});
+            
+            // GENERATE MONTH CALENDAR
+            const calendar = document.getElementById('calendar');
+            const today = now.getDate();
+            const currentMonth = now.toLocaleString('lv-LV', { month: 'long' });
+            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+            
+            let calendarHTML = `<div class="calendar-header">${currentMonth} ${now.getFullYear()}</div>`;
+            calendarHTML += '<div class="calendar-grid">';
+            
+            for(let day = 1; day <= daysInMonth; day++) {
+                calendarHTML += `<div class="calendar-day ${day === today ? 'today' : ''}">${day}</div>`;
+            }
+            calendarHTML += '</div>';
+            calendar.innerHTML = calendarHTML;
         }
         updateClock();
-        setInterval(updateClock, 1000);
+        setInterval(updateClock, 1000 * 60); // Update every minute for calendar
 
-        // CONTACT MODAL
         function showContact() {
-            alert('💬 Contact Us!\n📧 hello@chronofocus.lv\n📱 +371 20 123 456\n\nWe reply within 2 hours!\n\nRiga team ready to help students!');
+            alert('💬 Contact Us!\n📧 hello@chronofocus.lv\n📱 +371 20 123 456\n\nRiga team ready to help students within 2 hours!');
         }
     </script>
 </body>
 </html>
+

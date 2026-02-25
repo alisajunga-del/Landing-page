@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoFocus Beta - Free for Students</title>
+    <style>
+        /* Same styles as previous + additions */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; }
+        .hero { min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem; position: relative; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(0,255,136,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,191,255,0.1) 0%, transparent 50%); animation: pulse 4s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+        h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; animation: glow 2s infinite alternate; }
+        @keyframes glow { from { filter: drop-shadow(0 0 20px #00ff88); } to { filter: drop-shadow(0 0 40px #00bfff); } }
+        .free-badge { background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; box-shadow: 0 5px 20px rgba(0,255,136,0.4); }
+        .tagline { font-size: clamp(1.3rem, 3vw, 2rem); color: #ccc; margin-bottom: 2rem; }
+        .description { font-size: clamp(1rem, 2.5vw, 1.3rem); max-width: 650px; margin-bottom: 2.5rem; }
+        .signup-form { background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; max-width: 500px; margin: 0 auto 3rem; backdrop-filter: blur(20px); border: 1px solid rgba(0,255,136,0.2); }
+        .signup-form input { width: 100%; padding: 1.2rem; font-size: 1.1rem; background: #111; border: 1px solid #333; border-radius: 12px; color: #fff; margin-bottom: 1rem; transition: border 0.3s; }
+        .signup-form input:focus { outline: none; border-color: #00ff88; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
+        .cta { width: 100%; background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 1.2rem; font-size: 1.3rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 40px rgba(0,255,136,0.5); }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(0,255,136,0.7); }
+        .consoles { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .consoles h2 { text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #fff; }
+        .console-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem; }
+        .console-item { position: relative; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.8); background: #111; }
+        .console-item img { width: 100%; height: auto; display: block; }
+        .console-label { position: absolute; bottom: 1rem; left: 1rem; right: 1rem; background: rgba(0,0,0,0.8); padding: 1rem; border-radius: 12px; text-align: center; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+        .consoles .console-item { animation: fadeInUp 0.8s ease-out forwards; }
+        .consoles .console-item:nth-child(2) { animation-delay: 0.2s; }
+        .features { padding: 6rem 2rem; background: rgba(0,0,0,0.4); }
+        /* Reuse previous features/grid styles */
+        footer { background: #0a0a0a; color: #888; text-align: center; padding: 3rem; border-top: 1px solid #222; }
+        @media (max-width: 768px) { .console-grid { grid-template-columns: 1fr; } .signup-form { padding: 2rem 1.5rem; } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="hero">
+        <div class="free-badge">🚀 Free for Students - Beta Launch</div>
+        <h1>ChronoFocus</h1>
+        <p class="tagline">“Your future starts now — not tomorrow.”</p>
+        <p class="description">AI-powered time management for university students crushing procrastination. Control your semester, build unbreakable habits—100% free with just your email.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="signup-form">
+            <input type="email" name="email" placeholder="Enter your student email (e.g. alisa@university.lv)" required>
+            <button type="submit" class="cta">Claim Free Beta Access Now</button>
+        </form>
+        <p style="color: #888; font-size: 0.9rem;">No credit card needed. Exclusive for students 18-25. Unsubscribe anytime.</p>
+    </section>
+    
+    <section class="consoles">
+        <h2>See Your ChronoFocus Console</h2>
+        <div class="console-grid">
+            <div class="console-item">
+                <img src="https://images.unsplash.com/photo-1613466811575-c3b4e152694f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Dashboard overview with tasks and timer"> <!-- Mock dashboard insp. -->
+                <div class="console-label"><strong>Daily Dashboard</strong><br>Tasks, Pomodoro timer, habit streaks</div>
+            </div>
+            <div class="console-item">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Calendar and goals view"> <!-- Mock calendar insp. -->
+                <div class="console-label"><strong>Semester Roadmap</strong><br>Calendar sync, goal charts, exam prep</div>
+            </div>
+            <div class="console-item">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Stats and analytics"> <!-- Mock stats insp. -->
+                <div class="console-label"><strong>Progress Analytics</strong><br>Weekly focus stats, AI insights</div>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 3rem; color: #aaa;">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
+    </section>
+    
+    <!-- Features section reused from previous -->
+    <section class="features">
+        <h2 style="text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #fff;">Why Students Love It</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00ff88;">Zero Cost</h3>
+                <p>Free forever for verified students. Just email signup.</p>
+            </div>
+            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00bfff;">AI Procrastination Buster</h3>
+                <p>Smart suggestions for your toughest assignments.</p>
+            </div>
+            <div style="background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; border: 1px solid rgba(0,255,136,0.2);">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: #00ff88;">Beta Exclusive</h3>
+                <p>Early access + direct feedback to shape the app.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 ChronoFocus Beta | Riga, LV | <a href="#" style="color: #00ff88;">Privacy</a> | Built for students by students</p>
+    </footer>
+</body>
+</html>

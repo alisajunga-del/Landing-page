@@ -11,88 +11,80 @@
             line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; 
         }
         
-        /* TOP-RIGHT PANEL - LARGER & MORE READABLE */
+        /* TINY TOP-RIGHT PANEL - 50% SMALLER */
         .header-panel { 
-            position: fixed; top: 1.5rem; right: 1.5rem; background: rgba(20,20,20,0.98); 
-            backdrop-filter: blur(30px); border-radius: 24px; padding: 2rem 1.8rem 1.5rem; 
-            border: 1px solid rgba(0,255,136,0.5); z-index: 1000; box-shadow: 0 30px 80px rgba(0,0,0,0.8); 
-            min-width: 280px; max-width: 320px; text-align: center;
+            position: fixed; top: 1rem; right: 1rem; background: rgba(20,20,20,0.98); 
+            backdrop-filter: blur(25px); border-radius: 16px; padding: 1rem 1.2rem 0.8rem; 
+            border: 1px solid rgba(0,255,136,0.5); z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
+            min-width: 140px; max-width: 160px; text-align: center;
         }
         .clock { 
-            font-size: 2.2rem; font-weight: 900; 
+            font-size: 1.1rem; font-weight: 800; 
             background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; 
+            -webkit-text-fill-color: transparent; margin-bottom: 0.2rem; 
         }
-        .date { font-size: 1.2rem; color: #ddd; margin-bottom: 1.2rem; font-weight: 600; }
+        .date { font-size: 0.75rem; color: #ddd; margin-bottom: 0.6rem; font-weight: 500; }
         
-        /* BIGGER CALENDAR - FULLY READABLE */
+        /* MINI CALENDAR */
         .calendar { 
-            background: rgba(30,30,30,0.9); border-radius: 16px; padding: 1.2rem; margin-bottom: 1rem; 
+            background: rgba(30,30,30,0.9); border-radius: 10px; padding: 0.6rem; margin-bottom: 0.5rem; 
             border: 1px solid rgba(0,255,136,0.4); 
         }
         .calendar-header { 
-            font-weight: 800; color: #00ff88; margin-bottom: 0.8rem; font-size: 1.2rem; 
+            font-weight: 700; color: #00ff88; margin-bottom: 0.3rem; font-size: 0.7rem; 
         }
         .calendar-grid { 
-            display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; 
-            font-size: 1rem; font-weight: 600; text-align: center; 
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 1px; 
+            font-size: 0.55rem; font-weight: 600; text-align: center; 
         }
         .calendar-day { 
-            padding: 0.6rem 0.3rem; border-radius: 8px; min-height: 32px; display: flex; 
-            align-items: center; justify-content: center; transition: all 0.3s; 
+            padding: 0.2rem 0.1rem; border-radius: 4px; min-height: 14px; display: flex; 
+            align-items: center; justify-content: center; 
         }
         .calendar-day.today { 
             background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; 
-            font-weight: 900; font-size: 1.1rem; transform: scale(1.1);
+            font-weight: 700; font-size: 0.6rem;
         }
-        .calendar-day:hover { background: rgba(0,255,136,0.3); }
-        .calendar-day.empty { color: transparent; }
         
         .dream-text { 
-            font-size: 1rem; color: #00ff88; font-style: italic; font-weight: 600; 
-            letter-spacing: 0.8px; margin-bottom: 1rem; line-height: 1.4;
+            font-size: 0.6rem; color: #00ff88; font-style: italic; font-weight: 500; 
+            letter-spacing: 0.3px; margin-bottom: 0.4rem; line-height: 1.2;
         }
         
-        /* CONTACT WITH BEAUTIFUL BLONDE WOMAN */
+        /* MINI CONTACT */
         .contact-section { 
-            padding-top: 1rem; border-top: 1px solid rgba(0,255,136,0.4); 
-            cursor: pointer; transition: all 0.3s; padding-bottom: 0.5rem;
+            padding-top: 0.4rem; border-top: 1px solid rgba(0,255,136,0.3); 
+            cursor: pointer; transition: all 0.3s;
         }
-        .contact-section:hover { transform: scale(1.02); }
         .contact-avatar { 
-            width: 70px; height: 70px; border-radius: 50%; margin: 0 auto 1rem; 
-            box-shadow: 0 12px 40px rgba(0,255,136,0.6); border: 4px solid rgba(0,255,136,0.8);
-            transition: all 0.3s;
+            width: 32px; height: 32px; border-radius: 50%; margin: 0 auto 0.3rem; 
+            box-shadow: 0 4px 15px rgba(0,255,136,0.5); border: 2px solid rgba(0,255,136,0.7);
         }
-        .contact-avatar:hover { transform: scale(1.15); }
-        .contact-title { font-size: 1.3rem; font-weight: 800; color: #00ff88; margin-bottom: 0.4rem; }
-        .contact-text { font-size: 1rem; color: #ddd; font-weight: 500; }
+        .contact-title { font-size: 0.75rem; font-weight: 700; color: #00ff88; margin-bottom: 0.1rem; }
+        .contact-text { font-size: 0.55rem; color: #ccc; }
         
-        /* RESPONSIVE WATERFALL */
+        /* WATERFALL */
         .waterfall { 
-            position: fixed; left: 2rem; top: 20%; width: 320px; height: 70vh; 
+            position: fixed; left: 1.5rem; top: 15%; width: 280px; height: 65vh; 
             overflow: hidden; z-index: 100; pointer-events: none;
         }
         .student-card { 
-            position: absolute; background: rgba(20,20,20,0.95); backdrop-filter: blur(25px); 
-            border-radius: 24px; padding: 1.5rem; width: 300px; 
-            box-shadow: 0 25px 70px rgba(0,255,136,0.4); border: 1px solid rgba(0,255,136,0.4); 
-            animation: floatDown linear infinite; font-size: 1rem;
+            position: absolute; background: rgba(20,20,20,0.95); backdrop-filter: blur(20px); 
+            border-radius: 20px; padding: 1.2rem; width: 260px; 
+            box-shadow: 0 20px 60px rgba(0,255,136,0.4); border: 1px solid rgba(0,255,136,0.4); 
+            animation: floatDown linear infinite;
         }
-        .student-avatar { 
-            width: 55px; height: 55px; border-radius: 50%; margin-bottom: 1rem; 
-            box-shadow: 0 10px 30px rgba(255,255,255,0.5); 
-        }
-        .stars { color: #ffd700; font-size: 1.2rem; margin-bottom: 0.5rem; }
-        .student-name { font-weight: 700; color: #00ff88; margin-bottom: 0.5rem; font-size: 1.1rem; }
-        .student-quote { font-size: 1rem; color: #ddd; line-height: 1.5; }
-        .student-card:nth-child(1) { animation: floatDown 22s linear infinite; left: 0; top: -120px; }
-        .student-card:nth-child(2) { animation: floatDown 26s linear infinite 4s; left: 10px; top: -160px; }
-        .student-card:nth-child(3) { animation: floatDown 24s linear infinite 9s; left: -10px; top: -220px; }
-        .student-card:nth-child(4) { animation: floatDown 30s linear infinite 14s; left: 15px; top: -280px; }
-        @keyframes floatDown { 0% { transform: translateY(0) rotate(-1deg); opacity: 1; } 100% { transform: translateY(90vh) rotate(6deg); opacity: 0; } }
+        .student-avatar { width: 45px; height: 45px; border-radius: 50%; margin-bottom: 0.8rem; }
+        .stars { color: #ffd700; font-size: 1rem; margin-bottom: 0.4rem; }
+        .student-name { font-weight: 700; color: #00ff88; margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .student-quote { font-size: 0.9rem; color: #ddd; line-height: 1.4; }
+        .student-card:nth-child(1) { animation: floatDown 22s linear infinite; left: 0; top: -100px; }
+        .student-card:nth-child(2) { animation: floatDown 26s linear infinite 4s; left: 10px; top: -140px; }
+        .student-card:nth-child(3) { animation: floatDown 24s linear infinite 9s; left: -10px; top: -200px; }
+        .student-card:nth-child(4) { animation: floatDown 30s linear infinite 14s; left: 15px; top: -260px; }
+        @keyframes floatDown { 0% { transform: translateY(0) rotate(-1deg); opacity: 1; } 100% { transform: translateY(85vh) rotate(6deg); opacity: 0; } }
         
-        /* HERO - PERFECTLY SCALED */
+        /* HERO */
         .hero { 
             min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #0f0f0f 100%); 
             display: flex; flex-direction: column; justify-content: center; align-items: center; 
@@ -123,15 +115,16 @@
         .tagline { font-size: 2.5rem; color: #eee; margin-bottom: 2rem; font-weight: 300; position: relative; z-index: 10; }
         .description { font-size: 1.5rem; max-width: 700px; margin-bottom: 3rem; position: relative; z-index: 10; }
         
+        /* CLAIM FREE ACCESS SIZE REFERENCE */
         .signup-form { 
-            background: rgba(30,30,30,0.98); padding: 3rem; border-radius: 30px; max-width: 600px; 
-            margin: 0 auto 2.5rem; backdrop-filter: blur(30px); border: 2px solid rgba(0,255,136,0.5); 
-            position: relative; z-index: 10; box-shadow: 0 30px 90px rgba(0,0,0,0.7);
+            background: rgba(30,30,30,0.98); padding: 3rem; border-radius: 30px; 
+            max-width: 500px; width: 100%; margin: 0 auto 2.5rem; backdrop-filter: blur(30px); 
+            border: 2px solid rgba(0,255,136,0.5); position: relative; z-index: 10; 
+            box-shadow: 0 30px 90px rgba(0,0,0,0.7);
         }
         .signup-form input { 
             width: 100%; padding: 1.5rem 2rem; font-size: 1.3rem; background: rgba(15,15,15,0.95); 
             border: 2px solid rgba(60,60,60,0.9); border-radius: 20px; color: #fff; margin-bottom: 1.8rem; 
-            transition: all 0.4s; 
         }
         .signup-form input:focus { outline: none; border-color: #00ff88; box-shadow: 0 0 40px rgba(0,255,136,0.7); }
         .cta { 
@@ -143,7 +136,7 @@
         .cta:hover { transform: translateY(-8px); box-shadow: 0 30px 80px rgba(0,255,136,0.9); }
         .disclaimer { color: #aaa; font-size: 1.1rem; text-align: center; position: relative; z-index: 10; }
         
-        /* ULTRA RESPONSIVE SECTIONS */
+        /* SECTIONS - SAME SIZE AS SIGNUP FORM */
         .section-container { padding: 6rem 3rem; max-width: 1800px; margin: 0 auto; }
         .consoles { background: rgba(0,0,0,0.4); }
         .features { background: rgba(0,0,0,0.7); }
@@ -152,21 +145,21 @@
             background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         
-        /* RESPONSIVE GRID - BIGGER & READABLE */
+        /* MATCH SIGNUP FORM SIZE - CENTERED */
         .grid-container {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
-            gap: 2.5rem; justify-items: center; padding: 0 4rem; width: 100%;
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; padding: 0 2rem; width: 100%;
+            max-width: 500px; margin: 0 auto;
         }
         
         .console-item, .feature-item { 
-            width: 100%; height: 280px; border-radius: 28px; overflow: hidden; 
+            flex: 0 0 100%; max-width: 500px; height: 280px; border-radius: 30px; overflow: hidden; 
             box-shadow: 0 30px 90px rgba(0,0,0,0.8); transition: all 0.5s; position: relative;
         }
         .console-item { background: rgba(15,15,15,0.95); border: 3px solid rgba(0,255,136,0.4); }
         .feature-item { 
             background: rgba(35,35,35,0.98); border: 3px solid rgba(0,255,136,0.4); 
-            padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; 
-            justify-content: center; 
+            padding: 3rem 2.5rem; text-align: center; display: flex; flex-direction: column; 
+            justify-content: center; height: 280px;
         }
         .console-item:hover, .feature-item:hover { 
             transform: translateY(-20px) scale(1.05); box-shadow: 0 50px 120px rgba(0,255,136,0.5); 
@@ -184,7 +177,7 @@
         .feature-title.beta { color: #00ff88; }
         .feature-text { font-size: 1.3rem; color: #eee; line-height: 1.6; }
         
-        .consoles-subtitle { text-align: center; margin-top: 5rem; color: #bbb; font-size: 1.4rem; }
+        .consoles-subtitle { text-align: center; margin-top: 4rem; color: #bbb; font-size: 1.4rem; }
         
         footer { 
             background: #0a0a0a; color: #888; text-align: center; padding: 4rem 3rem; 
@@ -192,76 +185,69 @@
         }
         footer a { color: #00ff88; text-decoration: none; font-weight: 700; }
         
-        /* PERFECT RESPONSIVE */
-        @media (max-width: 1600px) { .hero { padding: 3rem 20rem 3rem 18rem; } }
+        /* RESPONSIVE */
         @media (max-width: 1200px) { 
             .waterfall { display: none; }
-            .hero { padding: 3rem 6rem !important; }
-            .grid-container { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); padding: 0 2rem; }
+            .hero { padding: 3rem 4rem !important; }
         }
         @media (max-width: 900px) { 
-            .header-panel { position: relative !important; position: fixed; top: 1rem; right: 1rem; 
-                min-width: 260px; padding: 1.5rem; }
+            .header-panel { position: relative !important; position: fixed; top: 1rem; right: 1rem; min-width: 130px; }
             .hero { padding: 2rem 2rem !important; }
             h1 { font-size: 3.5rem; }
-            .grid-container { grid-template-columns: 1fr; gap: 2rem; padding: 0 1rem; }
-            .console-item, .feature-item { height: 250px; }
+            .grid-container { max-width: 450px; }
+            .console-item, .feature-item { height: 260px; }
         }
         @media (max-width: 600px) { 
-            .header-panel { min-width: 240px; right: 0.5rem; padding: 1.2rem; }
+            .header-panel { min-width: 120px; right: 0.5rem; padding: 0.8rem 0.8rem; }
             h1 { font-size: 2.8rem; }
             .free-badge { font-size: 1.2rem; padding: 1rem 2rem; }
             .tagline { font-size: 2rem; }
             .description { font-size: 1.2rem; }
-            .signup-form { padding: 2rem 1.5rem; }
-            .signup-form input { font-size: 1.1rem; padding: 1.2rem 1.5rem; }
-            .cta { font-size: 1.3rem; padding: 1.3rem 2rem; }
-            .console-item, .feature-item { height: 220px; }
-            .console-label { font-size: 1rem; padding: 1.2rem; }
-            .feature-title { font-size: 1.6rem; }
-            .feature-text { font-size: 1.1rem; }
+            .signup-form { padding: 2rem 1.5rem; max-width: 400px; }
+            .grid-container { max-width: 400px; }
+            .console-item, .feature-item { height: 240px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- TOP-RIGHT PANEL WITH EVERYTHING VISIBLE -->
+    <!-- TINY TOP-RIGHT PANEL -->
     <div class="header-panel" id="clockPanel">
         <div class="clock" id="time"></div>
         <div class="date" id="date"></div>
         <div class="calendar" id="calendar"></div>
         <div class="dream-text">"Remember this day - it's the start of your dream future"</div>
         
-        <!-- BEAUTIFUL BLONDE WOMAN FOR CONTACT -->
+        <!-- BLONDE CONTACT - MINI SIZE -->
         <div class="contact-section" onclick="showContact()">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=70&h=70&fit=crop&crop=face" alt="Contact" class="contact-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Contact" class="contact-avatar">
             <div class="contact-title">Contact Us</div>
-            <div class="contact-text">We reply in 2 hours</div>
+            <div class="contact-text">Reply in 2h</div>
         </div>
     </div>
 
-    <!-- WATERFALL TESTIMONIALS -->
+    <!-- WATERFALL -->
     <div class="waterfall">
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=55&h=55&fit=crop&crop=face" class="student-avatar" alt="Anna">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Anna">
             <div class="stars">⭐⭐⭐⭐⭐ 9.8/10</div>
             <div class="student-name">Anna (RTU)</div>
             <div class="student-quote">"Pabeidzu semestri bez stresa!"</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=55&h=55&fit=crop&crop=face" class="student-avatar" alt="Jānis">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Jānis">
             <div class="stars">⭐⭐⭐⭐⭐ 9.5/10</div>
             <div class="student-name">Jānis (LU)</div>
             <div class="student-quote">"AI plānotājs mainīja manu dzīvi."</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=55&h=55&fit=crop&crop=face" class="student-avatar" alt="Līga">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Līga">
             <div class="stars">⭐⭐⭐⭐⭐ 10/10</div>
             <div class="student-name">Līga (RSU)</div>
             <div class="student-quote">"Perfekts studentiem Rīgā!"</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=55&h=55&fit=crop&crop=face" class="student-avatar" alt="Marta">
+            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Marta">
             <div class="stars">⭐⭐⭐⭐⭐ 9.7/10</div>
             <div class="student-name">Marta (LLU)</div>
             <div class="student-quote">"Nezaudēju ne vienu deadline."</div>
@@ -281,7 +267,7 @@
         <p class="disclaimer">No credit card needed. Exclusive for students 18-25. Unsubscribe anytime.</p>
     </section>
     
-    <!-- CONSOLES -->
+    <!-- CONSOLES - SAME SIZE AS FORM -->
     <section class="consoles section-container">
         <h2 class="section-title">See Your ChronoFocus Console</h2>
         <div class="grid-container console-grid">
@@ -301,7 +287,7 @@
         <p class="consoles-subtitle">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
     </section>
 
-    <!-- FEATURES -->
+    <!-- FEATURES - SAME SIZE AS FORM -->
     <section class="features section-container">
         <h2 class="section-title">Why Students Love It</h2>
         <div class="grid-container features-grid">
@@ -330,7 +316,6 @@
             document.getElementById('time').textContent = now.toLocaleTimeString('lv-LV', {hour12: false, hour: '2-digit', minute: '2-digit'});
             document.getElementById('date').textContent = now.toLocaleDateString('lv-LV', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'});
             
-            // FULL CALENDAR
             const calendar = document.getElementById('calendar');
             const today = now.getDate();
             const currentMonth = now.toLocaleString('lv-LV', { month: 'long' });
@@ -341,7 +326,7 @@
             calendarHTML += '<div class="calendar-grid">';
             
             for(let i = 0; i < firstDay; i++) {
-                calendarHTML += '<div class="calendar-day empty"></div>';
+                calendarHTML += '<div class="calendar-day"></div>';
             }
             for(let day = 1; day <= daysInMonth; day++) {
                 calendarHTML += `<div class="calendar-day ${day === today ? 'today' : ''}">${day}</div>`;
@@ -359,6 +344,7 @@
     </script>
 </body>
 </html>
+
 
 
 

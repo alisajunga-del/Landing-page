@@ -26,14 +26,17 @@
         
         .dream-text { font-size: 0.8rem; color: #00ff88; font-style: italic; font-weight: 500; letter-spacing: 0.5px; }
         
-        /* CONTACT PANEL - SAME STYLE AS CALENDAR + BEAUTIFUL WOMAN */
-        .contact-panel { 
-            position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: rgba(20,20,20,0.95); 
+        /* BOTTOM CONTACT PANEL - NEW WOMAN PICTURE */
+        .bottom-contact { 
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: rgba(20,20,20,0.95); 
             backdrop-filter: blur(25px); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(0,255,136,0.4); 
             z-index: 100; box-shadow: 0 20px 60px rgba(0,0,0,0.6); min-width: 220px; max-width: 240px; text-align: center;
-            transition: all 0.4s ease;
+            transition: all 0.4s ease; cursor: pointer;
         }
-        .contact-panel:hover { transform: translateY(-50%) translateX(-15px) scale(1.02); box-shadow: 0 30px 80px rgba(0,255,136,0.4); border-color: #00ff88; }
+        .bottom-contact:hover { 
+            transform: translateX(-50%) translateY(-10px) scale(1.02); 
+            box-shadow: 0 30px 80px rgba(0,255,136,0.4); border-color: #00ff88; 
+        }
         .contact-avatar { 
             width: 60px; height: 60px; border-radius: 50%; margin-bottom: 0.8rem; 
             box-shadow: 0 8px 25px rgba(0,255,136,0.4); border: 2px solid rgba(0,255,136,0.6);
@@ -66,7 +69,7 @@
         .hero { 
             min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
-            padding: 2rem clamp(2rem, 5vw, 25rem) 2rem clamp(2rem, 5vw, 20rem); position: relative; 
+            padding: 2rem clamp(2rem, 5vw, 25rem) 2rem clamp(2rem, 5vw, 20rem); position: relative; padding-bottom: 8rem; 
         }
         
         .hero::before { 
@@ -112,7 +115,7 @@
         .disclaimer { color: #888; font-size: clamp(0.8rem, 2vw, 0.9rem); text-align: center; position: relative; z-index: 2; }
         
         /* ULTRA RESPONSIVE CONSOLES */
-        .consoles { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem); max-width: 1600px; margin: 0 auto; }
+        .consoles { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem); max-width: 1600px; margin: 0 auto; padding-bottom: 8rem; }
         .consoles h2 { text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: clamp(2rem, 4vw, 3rem); color: #fff; }
         .console-grid { 
             display: grid; 
@@ -154,24 +157,27 @@
         
         footer { 
             background: #0a0a0a; color: #888; text-align: center; padding: clamp(2rem, 6vw, 3rem); 
-            border-top: 1px solid #222; font-size: clamp(0.85rem, 2vw, 0.95rem);
+            border-top: 1px solid #222; font-size: clamp(0.85rem, 2vw, 0.95rem); margin-bottom: 8rem;
         }
         
         /* ULTRA RESPONSIVE BREAKPOINTS */
         @media (max-width: 1400px) { .hero { padding-left: 18rem; padding-right: 18rem; } }
         @media (max-width: 1200px) { .console-grid, .features-grid { padding: 0 clamp(1rem, 4vw, 8vw); } }
         @media (max-width: 1024px) { 
-            .waterfall, .header-panel, .contact-panel { display: none !important; } 
+            .waterfall, .header-panel { display: none !important; } 
             .hero { padding: 2rem clamp(1.5rem, 8vw, 4rem) !important; }
+            .bottom-contact { bottom: 1.5rem; min-width: 200px; }
         }
         @media (max-width: 768px) { 
             .console-grid, .features-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
             .hero { padding: 1.5rem !important; }
+            .bottom-contact { bottom: 1rem; padding: 1.2rem; min-width: 180px; }
         }
         @media (max-width: 480px) { 
             .console-grid, .features-grid { grid-template-columns: 1fr; }
             .free-badge { padding: 0.8rem 1.5rem; }
             .signup-form { padding: 1.8rem 1.5rem; margin-bottom: 1.5rem; }
+            .bottom-contact { bottom: 1rem; min-width: 160px; padding: 1rem; .contact-avatar { width: 50px; height: 50px; } }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -185,9 +191,9 @@
         <div class="dream-text">"Remember this day - it's the start of your dream future"</div>
     </div>
 
-    <!-- CONTACT PANEL - CALENDAR STYLE + BEAUTIFUL WOMAN -->
-    <div class="contact-panel" onclick="showContact()">
-        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Alisa" class="contact-avatar">
+    <!-- BOTTOM CENTER CONTACT PANEL - NEW WOMAN PICTURE -->
+    <div class="bottom-contact" onclick="showContact()">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face" alt="Contact" class="contact-avatar">
         <div class="contact-icon">💬</div>
         <div class="contact-title">Contact Us</div>
         <div class="contact-text">We reply in 2 hours</div>
@@ -307,5 +313,6 @@
     </script>
 </body>
 </html>
+
 
 

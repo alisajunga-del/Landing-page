@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronoFocus - Shape your future now</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; 
+        }
+        .hero { 
+            min-height: 100vh; 
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #0f0f0f 100%); 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; padding: 2rem; position: relative; 
+        }
+        .hero-video { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.3; z-index: 1; 
+        }
+        .hero-content { position: relative; z-index: 2; }
+        h1 { 
+            font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; background: linear-gradient(45deg, #00ff88, #00bfff, #ff00ff); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; 
+            margin-bottom: 1rem; text-shadow: 0 0 30px rgba(0,255,136,0.5); animation: glow 2s ease-in-out infinite alternate; 
+        }
+        @keyframes glow { from { filter: drop-shadow(0 0 20px #00ff88); } to { filter: drop-shadow(0 0 40px #00bfff); } }
+        .tagline { 
+            font-size: clamp(1.3rem, 3.5vw, 2.2rem); font-weight: 300; color: #ccc; margin-bottom: 1.5rem; 
+            animation: fadeInUp 1s ease-out 0.3s both; 
+        }
+        .description { 
+            font-size: clamp(1.1rem, 2.8vw, 1.4rem); max-width: 650px; color: #aaa; margin-bottom: 2.5rem; 
+            animation: fadeInUp 1s ease-out 0.6s both; 
+        }
+        .cta { 
+            background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 1.2rem 3rem; font-size: 1.3rem; 
+            font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: all 0.4s; 
+            box-shadow: 0 0 30px rgba(0,255,136,0.6); animation: fadeInUp 1s ease-out 0.9s both; position: relative; overflow: hidden; 
+        }
+        .cta::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent); transition: 0.6s; }
+        .cta:hover::before { left: 100%; }
+        .cta:hover { transform: scale(1.05) translateY(-5px); box-shadow: 0 20px 50px rgba(0,255,136,0.8); }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .features { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; background: rgba(0,0,0,0.5); }
+        .features h2 { text-align: center; font-size: 3rem; margin-bottom: 4rem; color: #fff; position: relative; }
+        .features h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(45deg, #00ff88, #00bfff); }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
+        .card { 
+            background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; text-align: center; transition: all 0.4s; 
+            border: 1px solid rgba(0,255,136,0.2); backdrop-filter: blur(10px); 
+        }
+        .card:hover { transform: translateY(-15px); border-color: #00ff88; box-shadow: 0 25px 60px rgba(0,255,136,0.3); }
+        .card h3 { font-size: 1.8rem; margin-bottom: 1rem; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .video-section { padding: 4rem 2rem; text-align: center; background: #111; }
+        .video-section h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #fff; }
+        .video-container { max-width: 900px; margin: 0 auto; position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+        .video-container iframe, .video-container video { width: 100%; height: 500px; }
+        footer { background: #0a0a0a; color: #888; text-align: center; padding: 2.5rem; border-top: 1px solid #222; }
+        @media (max-width: 768px) { .hero { padding: 1.5rem; } .features { padding: 4rem 1.5rem; } .video-container iframe, .video-container video { height: 300px; } }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="your-student-focus-reel.mp4" type="video/mp4"> <!-- Replace with your video URL -->
+        </video>
+        <div class="hero-content">
+            <h1>ChronoFocus</h1>
+            <p class="tagline">“Your future starts now — not tomorrow.”</p>
+            <p class="description">Your future starts now. Every task you complete is a step closer to your goals. With ChronoFocus, the power to take control of your semester and build habits that last is already in your hands.</p>
+            <button class="cta" onclick="document.querySelector('.video-section').scrollIntoView({behavior: 'smooth'})">Start Building Habits</button>
+        </div>
+    </section>
+    
+    <section class="video-section">
+        <h2>Watch How Students Crush Their Semester</h2>
+        <div class="video-container">
+            <!-- YouTube embed example; replace with your reel/embed -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&mute=1&loop=1&playlist=dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+            <!-- Or self-hosted: <video controls poster="thumbnail.jpg"><source src="demo-reel.mp4" type="video/mp4"></video> -->
+        </div>
+    </section>
+    
+    <section class="features">
+        <h2>Student Power Tools</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Daily Focus Mode</h3>
+                <p>Block distractions, timer your study sessions like a pro gamer.</p>
+            </div>
+            <div class="card">
+                <h3>Habit Chains</h3>
+                <p>Visual streaks keep you accountable—don't break the chain!</p>
+            </div>
+            <div class="card">
+                <h3>Semester Roadmap</h3>
+                <p>Plan assignments, exams, and crams with smart calendars.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2026 ChronoFocus. Crafted for Riga students | Alisa's Design Vibes</p>
+    </footer>
+</body>
+</html>

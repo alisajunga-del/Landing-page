@@ -6,13 +6,13 @@
     <title>ChronoFocus - Free for Students</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; position: relative; }
+        body { font-family: 'Inter', system-ui, -apple-system, sans-serif; line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; position: relative; }
         
-        /* ENHANCED HEADER PANEL - Same width as Contact */
+        /* ENHANCED HEADER PANEL */
         .header-panel { 
             position: fixed; top: 1rem; right: 2rem; background: rgba(20,20,20,0.95); backdrop-filter: blur(25px); 
             border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(0,255,136,0.4); z-index: 100; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6); min-width: 220px; text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6); min-width: 220px; max-width: 240px; text-align: center;
         }
         .clock { font-size: 1.9rem; font-weight: 800; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.3rem; }
         .date { font-size: 1.1rem; color: #ccc; margin-bottom: 1rem; font-weight: 500; }
@@ -23,74 +23,156 @@
         .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 0.85rem; text-align: center; }
         .calendar-day { padding: 0.3rem 0.1rem; border-radius: 4px; }
         .calendar-day.today { background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; font-weight: 700; }
-        .calendar-day.other-month { color: #666; }
         
         .dream-text { font-size: 0.8rem; color: #00ff88; font-style: italic; font-weight: 500; letter-spacing: 0.5px; }
         
-        /* STYLISH CONTACT PANEL - Matches header width */
+        /* CONTACT PANEL - SAME STYLE AS CALENDAR + BEAUTIFUL WOMAN */
         .contact-panel { 
-            position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: linear-gradient(135deg, rgba(255,107,107,0.95), rgba(255,82,82,0.9)); 
-            backdrop-filter: blur(25px); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(255,107,107,0.6); 
-            z-index: 100; box-shadow: 0 25px 70px rgba(255,107,107,0.4); cursor: pointer; transition: all 0.4s; min-width: 220px; text-align: center;
+            position: fixed; top: 50%; right: 2rem; transform: translateY(-50%); background: rgba(20,20,20,0.95); 
+            backdrop-filter: blur(25px); border-radius: 20px; padding: 1.5rem; border: 1px solid rgba(0,255,136,0.4); 
+            z-index: 100; box-shadow: 0 20px 60px rgba(0,0,0,0.6); min-width: 220px; max-width: 240px; text-align: center;
+            transition: all 0.4s ease;
         }
-        .contact-panel:hover { transform: translateY(-50%) translateX(-15px) scale(1.05); box-shadow: 0 35px 80px rgba(255,107,107,0.6); }
-        .contact-icon { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
-        .contact-text { font-size: 1rem; font-weight: 700; color: white; line-height: 1.3; }
-        .contact-subtext { font-size: 0.8rem; font-weight: 400; color: rgba(255,255,255,0.9); margin-top: 0.2rem; }
+        .contact-panel:hover { transform: translateY(-50%) translateX(-15px) scale(1.02); box-shadow: 0 30px 80px rgba(0,255,136,0.4); border-color: #00ff88; }
+        .contact-avatar { 
+            width: 60px; height: 60px; border-radius: 50%; margin-bottom: 0.8rem; 
+            box-shadow: 0 8px 25px rgba(0,255,136,0.4); border: 2px solid rgba(0,255,136,0.6);
+        }
+        .contact-icon { font-size: 2rem; color: #00ff88; margin-bottom: 0.5rem; }
+        .contact-title { font-size: 1.1rem; font-weight: 700; color: #00ff88; margin-bottom: 0.3rem; }
+        .contact-text { font-size: 0.9rem; color: #ccc; }
         
-        /* WATERFALL LEFT SIDE - FIXED GENDER MATCHING */
-        .waterfall { position: fixed; left: 2rem; top: 20%; width: 280px; height: 70vh; overflow: hidden; z-index: 10; pointer-events: none; }
-        .student-card { position: absolute; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); border-radius: 20px; padding: 1.2rem; width: 260px; box-shadow: 0 15px 50px rgba(0,255,136,0.3); border: 1px solid rgba(0,255,136,0.3); animation: floatDown linear infinite; }
-        .student-avatar { width: 50px; height: 50px; border-radius: 50%; margin-bottom: 0.8rem; box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
-        .stars { color: #ffd700; font-size: 1.1rem; margin-bottom: 0.3rem; }
-        .student-name { font-weight: 600; color: #00ff88; margin-bottom: 0.2rem; }
-        .student-quote { font-size: 0.85rem; color: #ccc; }
+        /* RESPONSIVE WATERFALL */
+        .waterfall { 
+            position: fixed; left: 1rem; top: 15%; width: min(280px, 25vw); height: 70vh; overflow: hidden; z-index: 10; pointer-events: none; 
+            display: block;
+        }
+        .student-card { 
+            position: absolute; background: rgba(20,20,20,0.9); backdrop-filter: blur(15px); border-radius: 20px; 
+            padding: 1rem; width: 95%; box-shadow: 0 15px 50px rgba(0,255,136,0.3); border: 1px solid rgba(0,255,136,0.3); 
+            animation: floatDown linear infinite; font-size: 0.9rem;
+        }
+        .student-avatar { width: 45px; height: 45px; border-radius: 50%; margin-bottom: 0.6rem; box-shadow: 0 5px 20px rgba(255,255,255,0.3); }
+        .stars { color: #ffd700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .student-name { font-weight: 600; color: #00ff88; margin-bottom: 0.2rem; font-size: 0.95rem; }
+        .student-quote { font-size: 0.8rem; color: #ccc; line-height: 1.3; }
         .student-card:nth-child(1) { animation: floatDown 20s linear infinite; left: 0; top: -100px; }
-        .student-card:nth-child(2) { animation: floatDown 25s linear infinite 3s; left: 10px; top: -150px; }
-        .student-card:nth-child(3) { animation: floatDown 22s linear infinite 8s; left: -10px; top: -200px; }
-        .student-card:nth-child(4) { animation: floatDown 28s linear infinite 12s; left: 20px; top: -250px; }
-        @keyframes floatDown { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(80vh) rotate(5deg); opacity: 0; } }
+        .student-card:nth-child(2) { animation: floatDown 25s linear infinite 3s; left: 5%; top: -150px; }
+        .student-card:nth-child(3) { animation: floatDown 22s linear infinite 8s; left: -5%; top: -200px; }
+        .student-card:nth-child(4) { animation: floatDown 28s linear infinite 12s; left: 10%; top: -250px; }
+        @keyframes floatDown { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(85vh) rotate(5deg); opacity: 0; } }
         
-        /* Hero adjusted */
-        .hero { min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 2rem 25rem 2rem 20rem; position: relative; }
-        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(0,255,136,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,191,255,0.1) 0%, transparent 50%); animation: pulse 4s infinite; }
+        /* PERFECTLY RESPONSIVE HERO */
+        .hero { 
+            min-height: 100vh; background: linear-gradient(135deg, #000 0%, #1a1a1a 100%); 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            padding: 2rem clamp(2rem, 5vw, 25rem) 2rem clamp(2rem, 5vw, 20rem); position: relative; 
+        }
+        
+        .hero::before { 
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: radial-gradient(circle at 20% 80%, rgba(0,255,136,0.1) 0%, transparent 50%), 
+                        radial-gradient(circle at 80% 20%, rgba(0,191,255,0.1) 0%, transparent 50%); 
+            animation: pulse 4s infinite; 
+        }
         @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
-        h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; animation: glow 2s infinite alternate; }
+        
+        h1 { 
+            font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 900; 
+            background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            margin-bottom: 1rem; animation: glow 2s infinite alternate; position: relative; z-index: 2;
+        }
         @keyframes glow { from { filter: drop-shadow(0 0 20px #00ff88); } to { filter: drop-shadow(0 0 40px #00bfff); } }
-        .free-badge { background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 1.1rem; margin-bottom: 1rem; display: inline-block; box-shadow: 0 5px 20px rgba(0,255,136,0.4); }
-        .tagline { font-size: clamp(1.3rem, 3vw, 2rem); color: #ccc; margin-bottom: 2rem; }
-        .description { font-size: clamp(1rem, 2.5vw, 1.3rem); max-width: 650px; margin-bottom: 2.5rem; }
-        .signup-form { background: rgba(30,30,30,0.8); padding: 2.5rem; border-radius: 24px; max-width: 500px; margin: 0 auto 3rem; backdrop-filter: blur(20px); border: 1px solid rgba(0,255,136,0.2); }
-        .signup-form input { width: 100%; padding: 1.2rem; font-size: 1.1rem; background: #111; border: 1px solid #333; border-radius: 12px; color: #fff; margin-bottom: 1rem; transition: border 0.3s; }
-        .signup-form input:focus { outline: none; border-color: #00ff88; box-shadow: 0 0 20px rgba(0,255,136,0.3); }
-        .cta { width: 100%; background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 1.2rem; font-size: 1.3rem; font-weight: 700; border: none; border-radius: 12px; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 40px rgba(0,255,136,0.5); }
-        .cta:hover { transform: translateY(-2px); box-shadow: 0 15px 50px rgba(0,255,136,0.7); }
         
-        /* MATCHING CONSOLE SIZES FOR FEATURES */
-        .consoles { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
-        .consoles h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #fff; }
-        .console-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 20rem; }
-        .console-item { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.7); background: #111; transition: transform 0.3s; height: 220px; }
-        .console-item:hover { transform: scale(1.05); }
+        .free-badge { 
+            background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 0.6rem 1.8rem; 
+            border-radius: 50px; font-weight: 700; font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
+            margin-bottom: 1.5rem; display: inline-block; box-shadow: 0 8px 25px rgba(0,255,136,0.4); position: relative; z-index: 2;
+        }
+        .tagline { font-size: clamp(1.1rem, 4vw, 2rem); color: #ccc; margin-bottom: 1.5rem; position: relative; z-index: 2; }
+        .description { font-size: clamp(1rem, 3vw, 1.3rem); max-width: 650px; margin-bottom: 2.5rem; position: relative; z-index: 2; }
+        
+        .signup-form { 
+            background: rgba(30,30,30,0.9); padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: 24px; 
+            max-width: min(500px, 90vw); margin: 0 auto 2rem; backdrop-filter: blur(20px); 
+            border: 1px solid rgba(0,255,136,0.3); position: relative; z-index: 2;
+        }
+        .signup-form input { 
+            width: 100%; padding: 1.2rem 1rem; font-size: clamp(1rem, 3vw, 1.1rem); background: #111; 
+            border: 1px solid #333; border-radius: 12px; color: #fff; margin-bottom: 1rem; transition: all 0.3s; 
+            box-sizing: border-box;
+        }
+        .signup-form input:focus { outline: none; border-color: #00ff88; box-shadow: 0 0 20px rgba(0,255,136,0.4); }
+        .cta { 
+            width: 100%; background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; padding: 1.2rem 1rem; 
+            font-size: clamp(1.1rem, 3vw, 1.3rem); font-weight: 700; border: none; border-radius: 12px; cursor: pointer; 
+            transition: all 0.4s; box-shadow: 0 10px 40px rgba(0,255,136,0.5); position: relative; z-index: 2;
+        }
+        .cta:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,255,136,0.7); }
+        .disclaimer { color: #888; font-size: clamp(0.8rem, 2vw, 0.9rem); text-align: center; position: relative; z-index: 2; }
+        
+        /* ULTRA RESPONSIVE CONSOLES */
+        .consoles { padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 3vw, 2rem); max-width: 1600px; margin: 0 auto; }
+        .consoles h2 { text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: clamp(2rem, 4vw, 3rem); color: #fff; }
+        .console-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 380px), 1fr)); 
+            gap: clamp(1rem, 3vw, 1.5rem); justify-items: center; padding: 0 clamp(1rem, 3vw, 15vw);
+        }
+        .console-item { 
+            position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.7); 
+            background: #111; transition: all 0.3s; width: 100%; height: clamp(200px, 18vw, 220px); 
+        }
+        .console-item:hover { transform: scale(1.03); }
         .console-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .console-label { position: absolute; bottom: 0.5rem; left: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.85); padding: 0.8rem; border-radius: 10px; text-align: center; font-size: 0.9rem; }
+        .console-label { 
+            position: absolute; bottom: 0.5rem; left: 0.5rem; right: 0.5rem; background: rgba(0,0,0,0.9); 
+            padding: 0.8rem 0.5rem; border-radius: 10px; text-align: center; font-size: clamp(0.8rem, 2vw, 0.9rem); 
+        }
         
-        /* FEATURES - SAME SIZE AS CONSOLES */
-        .features { padding: 4rem 2rem; background: rgba(0,0,0,0.4); }
-        .features h2 { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: #fff; }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding: 0 20rem; max-width: 1400px; margin: 0 auto; }
-        .feature-item { background: rgba(30,30,30,0.9); border-radius: 16px; padding: 1.5rem; text-align: center; border: 1px solid rgba(0,255,136,0.3); height: 220px; display: flex; flex-direction: column; justify-content: center; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* MATCHING FEATURES */
+        .features { padding: clamp(3rem, 8vw, 4rem) clamp(1rem, 3vw, 2rem); background: rgba(0,0,0,0.4); }
+        .features h2 { text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); margin-bottom: clamp(2rem, 4vw, 3rem); color: #fff; }
+        .features-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 22vw, 380px), 1fr)); 
+            gap: clamp(1rem, 3vw, 1.5rem); justify-items: center; padding: 0 clamp(1rem, 3vw, 15vw); max-width: 1600px; margin: 0 auto;
+        }
+        .feature-item { 
+            background: rgba(30,30,30,0.9); border-radius: 16px; padding: 1.5rem; text-align: center; 
+            border: 1px solid rgba(0,255,136,0.3); height: clamp(200px, 18vw, 220px); 
+            display: flex; flex-direction: column; justify-content: center; transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            width: 100%;
+        }
         .feature-item:hover { transform: translateY(-10px); border-color: #00ff88; box-shadow: 0 20px 50px rgba(0,255,136,0.3); }
-        .feature-title { font-size: 1.3rem; margin-bottom: 0.8rem; }
+        .feature-title { font-size: clamp(1.1rem, 3vw, 1.3rem); margin-bottom: 0.8rem; font-weight: 700; }
         .feature-title.zero { color: #00ff88; }
         .feature-title.ai { color: #00bfff; }
         .feature-title.beta { color: #00ff88; }
+        .feature-text { font-size: clamp(0.85rem, 2vw, 0.95rem); color: #ccc; }
         
-        footer { background: #0a0a0a; color: #888; text-align: center; padding: 3rem; border-top: 1px solid #222; }
+        .consoles-subtitle { text-align: center; margin-top: clamp(2rem, 4vw, 3rem); color: #aaa; font-size: clamp(0.9rem, 2.5vw, 1rem); }
         
-        @media (max-width: 1200px) { .console-grid, .features-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); padding: 0 2rem; } }
-        @media (max-width: 1024px) { .waterfall, .header-panel, .contact-panel { display: none; } .hero { padding: 2rem 2rem 2rem 2rem; } }
-        @media (max-width: 768px) { .console-grid, .features-grid { grid-template-columns: 1fr; } }
+        footer { 
+            background: #0a0a0a; color: #888; text-align: center; padding: clamp(2rem, 6vw, 3rem); 
+            border-top: 1px solid #222; font-size: clamp(0.85rem, 2vw, 0.95rem);
+        }
+        
+        /* ULTRA RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1400px) { .hero { padding-left: 18rem; padding-right: 18rem; } }
+        @media (max-width: 1200px) { .console-grid, .features-grid { padding: 0 clamp(1rem, 4vw, 8vw); } }
+        @media (max-width: 1024px) { 
+            .waterfall, .header-panel, .contact-panel { display: none !important; } 
+            .hero { padding: 2rem clamp(1.5rem, 8vw, 4rem) !important; }
+        }
+        @media (max-width: 768px) { 
+            .console-grid, .features-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+            .hero { padding: 1.5rem !important; }
+        }
+        @media (max-width: 480px) { 
+            .console-grid, .features-grid { grid-template-columns: 1fr; }
+            .free-badge { padding: 0.8rem 1.5rem; }
+            .signup-form { padding: 1.8rem 1.5rem; margin-bottom: 1.5rem; }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
@@ -103,42 +185,43 @@
         <div class="dream-text">"Remember this day - it's the start of your dream future"</div>
     </div>
 
-    <!-- STYLISH CONTACT PANEL -->
+    <!-- CONTACT PANEL - CALENDAR STYLE + BEAUTIFUL WOMAN -->
     <div class="contact-panel" onclick="showContact()">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face" alt="Alisa" class="contact-avatar">
         <div class="contact-icon">💬</div>
-        <div class="contact-text">Contact Us</div>
-        <div class="contact-subtext">We reply in 2 hours</div>
+        <div class="contact-title">Contact Us</div>
+        <div class="contact-text">We reply in 2 hours</div>
     </div>
 
-    <!-- WATERFALL LEFT SIDE - FIXED GENDER MATCHING -->
+    <!-- RESPONSIVE WATERFALL - FIXED GENDER MATCHING -->
     <div class="waterfall">
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Anna">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Anna">
             <div class="stars">⭐⭐⭐⭐⭐ 9.8/10</div>
             <div class="student-name">Anna (RTU)</div>
             <div class="student-quote">"Pabeidzu semestri bez stresa!"</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Jānis">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Jānis">
             <div class="stars">⭐⭐⭐⭐⭐ 9.5/10</div>
             <div class="student-name">Jānis (LU)</div>
             <div class="student-quote">"AI plānotājs mainīja manu dzīvi."</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Līga">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Līga">
             <div class="stars">⭐⭐⭐⭐⭐ 10/10</div>
             <div class="student-name">Līga (RSU)</div>
             <div class="student-quote">"Perfekts studentiem Rīgā!"</div>
         </div>
         <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=50&h=50&fit=crop&crop=face" class="student-avatar" alt="Marta">
+            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Marta">
             <div class="stars">⭐⭐⭐⭐⭐ 9.7/10</div>
             <div class="student-name">Marta (LLU)</div>
             <div class="student-quote">"Nezaudēju ne vienu deadline."</div>
         </div>
     </div>
 
-    <!-- HERO SECTION -->
+    <!-- RESPONSIVE HERO -->
     <section class="hero">
         <div class="free-badge">📓 FREE AI-powered time management for Students</div>
         <h1>ChronoFocus</h1>
@@ -148,10 +231,10 @@
             <input type="email" name="email" placeholder="Enter your student email (e.g. alisa@university.lv)" required>
             <button type="submit" class="cta">Claim Free Access Now</button>
         </form>
-        <p style="color: #888; font-size: 0.9rem;">No credit card needed. Exclusive for students 18-25. Unsubscribe anytime.</p>
+        <p class="disclaimer">No credit card needed. Exclusive for students 18-25. Unsubscribe anytime.</p>
     </section>
     
-    <!-- CONSOLES - NEW DAILY DASHBOARD IMAGE -->
+    <!-- ULTRA RESPONSIVE CONSOLES -->
     <section class="consoles">
         <h2>See Your ChronoFocus Console</h2>
         <div class="console-grid">
@@ -168,24 +251,24 @@
                 <div class="console-label"><strong>Progress Analytics</strong><br>Stats • AI Insights</div>
             </div>
         </div>
-        <p style="text-align: center; margin-top: 3rem; color: #aaa;">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
+        <p class="consoles-subtitle">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
     </section>
 
-    <!-- MATCHING FEATURES SECTION -->
+    <!-- RESPONSIVE FEATURES -->
     <section class="features">
         <h2>Why Students Love It</h2>
         <div class="features-grid">
             <div class="feature-item">
                 <div class="feature-title zero">Zero Cost</div>
-                <p>Free forever for verified students. Just email signup.</p>
+                <div class="feature-text">Free forever for verified students. Just email signup.</div>
             </div>
             <div class="feature-item">
                 <div class="feature-title ai">AI Procrastination Buster</div>
-                <p>Smart suggestions for your toughest assignments.</p>
+                <div class="feature-text">Smart suggestions for your toughest assignments.</div>
             </div>
             <div class="feature-item">
                 <div class="feature-title beta">Beta Exclusive</div>
-                <p>Early access + direct feedback to shape the app.</p>
+                <div class="feature-text">Early access + direct feedback to shape the app.</div>
             </div>
         </div>
     </section>
@@ -195,7 +278,7 @@
     </footer>
 
     <script>
-        // ENHANCED CLOCK + CALENDAR
+        // RESPONSIVE CLOCK + CALENDAR
         function updateClock() {
             const now = new Date();
             document.getElementById('time').textContent = now.toLocaleTimeString('lv-LV', {hour12: false, hour: '2-digit', minute: '2-digit'});
@@ -209,7 +292,6 @@
             
             let calendarHTML = `<div class="calendar-header">${currentMonth} ${now.getFullYear()}</div>`;
             calendarHTML += '<div class="calendar-grid">';
-            
             for(let day = 1; day <= daysInMonth; day++) {
                 calendarHTML += `<div class="calendar-day ${day === today ? 'today' : ''}">${day}</div>`;
             }
@@ -217,7 +299,7 @@
             calendar.innerHTML = calendarHTML;
         }
         updateClock();
-        setInterval(updateClock, 1000 * 60); // Update every minute for calendar
+        setInterval(updateClock, 1000 * 60);
 
         function showContact() {
             alert('💬 Contact Us!\n📧 hello@chronofocus.lv\n📱 +371 20 123 456\n\nRiga team ready to help students within 2 hours!');
@@ -225,4 +307,5 @@
     </script>
 </body>
 </html>
+
 

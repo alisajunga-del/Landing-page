@@ -11,7 +11,7 @@
             line-height: 1.6; color: #e0e0e0; background: #000; overflow-x: hidden; position: relative; 
         }
         
-        /* TOP-RIGHT HEADER PANEL - CLOCK + CALENDAR -> TEXT ON SCROLL */
+        /* TOP-RIGHT HEADER PANEL - ONLY DATE (26.02.2026) */
         .header-panel { 
             position: fixed; top: 1rem; right: 1.5rem; background: rgba(20,20,20,0.97); backdrop-filter: blur(30px); 
             border-radius: 24px; padding: 1.8rem 1.5rem 1.2rem; border: 1px solid rgba(0,255,136,0.5); 
@@ -19,64 +19,23 @@
             min-width: 240px; max-width: 260px; text-align: center; transition: all 0.4s ease;
         }
         
-        /* SCROLL STATE - ONLY LIGHT TEXT */
         .header-panel.scrolled {
             padding: 1rem 1.2rem 0.8rem; min-width: 220px; max-width: 240px;
         }
-        .header-panel.scrolled .clock, .header-panel.scrolled .date, .header-panel.scrolled .calendar {
-            display: none;
-        }
-        .header-panel.scrolled .dream-text {
-            font-size: clamp(0.7rem, 1.8vw, 0.85rem); font-weight: 400; opacity: 0.8;
+        .header-panel.scrolled .date { font-size: clamp(0.9rem, 2vw, 1rem); opacity: 0.9; }
+        
+        .date { 
+            font-size: clamp(1.2rem, 3vw, 1.4rem); color: #00ff88; margin-bottom: 0.6rem; font-weight: 600; 
+            letter-spacing: 0.8px; font-style: normal;
         }
         
-        .clock { 
-            font-size: clamp(1.6rem, 4vw, 1.9rem); font-weight: 800; 
-            background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            margin-bottom: 0.4rem; 
-        }
-        .date { font-size: clamp(1rem, 2.5vw, 1.1rem); color: #ccc; margin-bottom: 1rem; font-weight: 500; }
-        
-        /* MONTH CALENDAR - VISIBLE ON LANDING */
-        .calendar { 
-            background: rgba(30,30,30,0.85); border-radius: 14px; padding: 1rem; margin-bottom: 0.8rem; 
-            border: 1px solid rgba(0,255,136,0.4); 
-        }
-        .calendar-header { font-weight: 700; color: #00ff88; margin-bottom: 0.6rem; font-size: clamp(0.9rem, 2.2vw, 1rem); }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; font-size: clamp(0.75rem, 2vw, 0.85rem); text-align: center; }
-        .calendar-day { padding: 0.4rem 0.2rem; border-radius: 6px; transition: all 0.2s; }
-        .calendar-day.today { background: linear-gradient(45deg, #00ff88, #00bfff); color: #000; font-weight: 700; }
-        .calendar-day:hover { background: rgba(0,255,136,0.2); transform: scale(1.1); }
-        
-        /* BIGGER NON-ITALIC DREAM TEXT */
         .dream-text { 
             font-size: clamp(1rem, 2.8vw, 1.1rem); color: #00ff88; font-weight: 600; 
             letter-spacing: 0.8px; margin-bottom: 0.6rem; font-style: normal;
         }
-        
-        /* RESPONSIVE WATERFALL - LEFT SIDE */
-        .waterfall { 
-            position: fixed; left: clamp(0.5rem, 2vw, 1.5rem); top: clamp(10%, 3vh, 15%); 
-            width: clamp(240px, 28vw, 300px); height: clamp(60vh, 70vh, 75vh); overflow: hidden; z-index: 100; 
-            pointer-events: none;
+        .header-panel.scrolled .dream-text {
+            font-size: clamp(0.7rem, 1.8vw, 0.85rem); font-weight: 400; opacity: 0.8;
         }
-        .student-card { 
-            position: absolute; background: rgba(20,20,20,0.92); backdrop-filter: blur(20px); border-radius: 20px; 
-            padding: clamp(0.8rem, 2vw, 1.2rem); width: 96%; box-shadow: 0 20px 60px rgba(0,255,136,0.4); 
-            border: 1px solid rgba(0,255,136,0.4); animation: floatDown linear infinite;
-        }
-        .student-avatar { 
-            width: clamp(38px, 10vw, 50px); height: clamp(38px, 10vw, 50px); border-radius: 50%; 
-            margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem); box-shadow: 0 8px 25px rgba(255,255,255,0.4); 
-        }
-        .stars { color: #ffd700; font-size: clamp(0.85rem, 2.2vw, 1rem); margin-bottom: 0.3rem; }
-        .student-name { font-weight: 700; color: #00ff88; margin-bottom: 0.3rem; font-size: clamp(0.85rem, 2.2vw, 0.95rem); }
-        .student-quote { font-size: clamp(0.75rem, 2vw, 0.85rem); color: #ccc; line-height: 1.35; }
-        .student-card:nth-child(1) { animation: floatDown 22s linear infinite; left: 0; top: -120px; }
-        .student-card:nth-child(2) { animation: floatDown 26s linear infinite 4s; left: 8%; top: -160px; }
-        .student-card:nth-child(3) { animation: floatDown 24s linear infinite 9s; left: -8%; top: -220px; }
-        .student-card:nth-child(4) { animation: floatDown 30s linear infinite 14s; left: 12%; top: -280px; }
-        @keyframes floatDown { 0% { transform: translateY(0) rotate(-1deg); opacity: 1; } 100% { transform: translateY(90vh) rotate(6deg); opacity: 0; } }
         
         /* HERO WITH BEAUTIFUL ANIMATION */
         .hero { 
@@ -95,13 +54,12 @@
         }
         @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.8; } }
         
-        /* BEAUTIFUL CHRONOFOCUS ANIMATION */
         h1 { 
             font-size: clamp(2.8rem, 10vw, 6rem); font-weight: 900; 
             background: linear-gradient(45deg, #00ff88, #00bfff, #ff6b9d); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
             margin-bottom: clamp(1rem, 3vw, 1.5rem); position: relative; z-index: 10;
-            opacity: 0; transform: translateY(50px) scale(0.8); /* START HIDDEN */
+            opacity: 0; transform: translateY(50px) scale(0.8);
             animation: beautifulAppear 2s 0.5s forwards cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-shadow: 0 0 40px rgba(0,255,136,0.3);
         }
@@ -163,12 +121,13 @@
             animation: slideUp 1s 2.3s both; opacity: 0; transform: translateY(30px);
         }
         
-        /* SECTIONS - SAME AS BEFORE */
+        /* SECTIONS */
         .section-container {
             padding: clamp(3rem, 10vw, 7rem) clamp(1.5rem, 6vw, 4rem);
             max-width: 1800px; margin: 0 auto;
         }
         .consoles { background: rgba(0,0,0,0.3); }
+        .feedbacks { background: rgba(0,0,0,0.4); }
         .features { background: rgba(0,0,0,0.6); }
         
         .section-title { 
@@ -177,12 +136,16 @@
             background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             position: relative;
         }
+        .section-title.small-title {
+            font-size: clamp(1.8rem, 5vw, 2.8rem);
+        }
         .section-title::after {
             content: ''; position: absolute; bottom: -1rem; left: 50%; transform: translateX(-50%);
             width: clamp(60px, 12vw, 100px); height: 4px; background: linear-gradient(45deg, #00ff88, #00bfff);
             border-radius: 2px;
         }
         
+        /* REGULAR GRID FOR CONSOLES */
         .grid-container {
             display: grid; 
             grid-template-columns: repeat(auto-fit, minmax(clamp(300px, 24vw, 420px), 1fr)); 
@@ -190,35 +153,68 @@
             width: 100%;
         }
         
-        .console-item, .feature-item { 
+        /* SINGLE ROW CENTERED GRID FOR FEEDBACKS & FEATURES */
+        .single-row-grid {
+            display: flex; 
+            justify-content: center; 
+            gap: clamp(1rem, 3vw, 2rem); 
+            flex-wrap: nowrap; 
+            padding: 0 clamp(1rem, 5vw, 3rem);
+            width: 100%;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .single-row-grid::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* REGULAR SIZE FOR CONSOLES */
+        .console-item { 
             width: 100%; aspect-ratio: 16/10; border-radius: 24px; overflow: hidden; 
             box-shadow: 0 25px 80px rgba(0,0,0,0.7); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative; backdrop-filter: blur(10px);
+            position: relative; backdrop-filter: blur(10px); background: rgba(15,15,15,0.9); 
+            border: 2px solid rgba(0,255,136,0.3);
         }
-        .console-item { background: rgba(15,15,15,0.9); border: 2px solid rgba(0,255,136,0.3); }
-        .feature-item { 
-            background: rgba(30,30,30,0.95); border: 2px solid rgba(0,255,136,0.3); 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            padding: clamp(1.5rem, 4vw, 2.5rem); text-align: center; min-height: clamp(200px, 22vw, 260px);
+        
+        /* SMALLER SIZE FOR FEEDBACKS & FEATURES */
+        .feature-item, .feedback-item { 
+            width: 100%; max-width: 260px; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6); transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative; backdrop-filter: blur(10px); background: rgba(30,30,30,0.95); 
+            border: 2px solid rgba(0,255,136,0.3); display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; padding: clamp(1rem, 2.5vw, 1.5rem); 
+            text-align: center; min-height: 140px; flex-shrink: 0;
         }
-        .console-item:hover, .feature-item:hover { 
-            transform: translateY(-15px) scale(1.05); box-shadow: 0 40px 120px rgba(0,255,136,0.4); 
+        
+        .console-item:hover, .feature-item:hover, .feedback-item:hover { 
+            transform: translateY(-12px) scale(1.03); box-shadow: 0 35px 100px rgba(0,255,136,0.4); 
             border-color: #00ff88;
         }
         .console-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
         .console-item:hover img { transform: scale(1.1); }
         .console-label { 
             position: absolute; bottom: 1rem; left: 1rem; right: 1rem; 
-            background: rgba(0,0,0,0.92); padding: clamp(1rem, 3vw, 1.4rem); border-radius: 16px; 
-            text-align: center; font-size: clamp(0.95rem, 2.5vw, 1.1rem); font-weight: 700;
+            background: rgba(0,0,0,0.92); padding: clamp(0.8rem, 2vw, 1.2rem); border-radius: 16px; 
+            text-align: center; font-size: clamp(0.9rem, 2.2vw, 1rem); font-weight: 700;
             backdrop-filter: blur(15px); border: 1px solid rgba(0,255,136,0.5);
         }
+        
+        /* SMALLER FEEDBACK STYLES */
+        .feedback-stars { color: #ffd700; font-size: clamp(0.8rem, 2vw, 0.95rem); margin-bottom: 0.3rem; }
+        .feedback-name { font-weight: 700; color: #00ff88; margin-bottom: 0.3rem; font-size: clamp(0.85rem, 2.2vw, 1rem); }
+        .feedback-quote { 
+            font-size: clamp(0.75rem, 2vw, 0.9rem); color: #ddd; line-height: 1.4; 
+            font-style: italic;
+        }
+        
+        /* FEATURE STYLES */
         .feature-title { 
-            font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 800; margin-bottom: 1rem; 
+            font-size: clamp(1rem, 2.8vw, 1.4rem); font-weight: 800; margin-bottom: 0.5rem; 
             background: linear-gradient(45deg, #00ff88, #00bfff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .feature-text { 
-            font-size: clamp(0.95rem, 2.8vw, 1.2rem); color: #ddd; line-height: 1.5; 
+            font-size: clamp(0.8rem, 2.2vw, 1rem); color: #ddd; line-height: 1.4; 
         }
         
         .consoles-subtitle { 
@@ -251,62 +247,34 @@
         @media (max-width: 1400px) { .hero { padding-left: clamp(15rem, 20vw, 22rem); } }
         @media (max-width: 1200px) { .grid-container { padding: 0 clamp(1rem, 6vw, 4rem); } }
         @media (max-width: 1024px) { 
-            .waterfall { display: none; }
             .header-panel { right: 1rem; top: 1rem; min-width: 220px; }
             .hero { padding: clamp(2rem, 8vw, 4rem) !important; }
         }
         @media (max-width: 768px) { 
-            .grid-container { grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr)); gap: clamp(1rem, 5vw, 2rem); }
+            .single-row-grid { 
+                flex-wrap: wrap; 
+                grid-template-columns: repeat(auto-fit, minmax(90vw, 1fr)); 
+                gap: clamp(1rem, 5vw, 2rem); 
+            }
             .hero { padding: clamp(1.5rem, 10vw, 3rem) !important; }
-            .header-panel { position: relative; position: fixed; top: 1rem; right: 1rem; min-width: 200px; padding: 1.2rem; }
+            .header-panel { position: fixed; top: 1rem; right: 1rem; min-width: 200px; padding: 1.2rem; }
         }
         @media (max-width: 480px) { 
             .grid-container { grid-template-columns: 1fr; gap: 1.5rem; }
             .header-panel { min-width: 180px; padding: 1rem; right: 0.5rem; }
-            .calendar-grid { font-size: 0.75rem; gap: 1px; }
             .free-badge, .cta { letter-spacing: 0.3px; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- TOP-RIGHT PANEL: CLOCK+CALENDAR -> ONLY TEXT ON SCROLL -->
+    <!-- TOP-RIGHT PANEL: ONLY STATIC DATE -->
     <div class="header-panel" id="clockPanel">
-        <div class="clock" id="time"></div>
-        <div class="date" id="date"></div>
-        <div class="calendar" id="calendar"></div>
+        <div class="date">26.02.2026</div>
         <div class="dream-text">"Remember this day - it's a start of your dream future"</div>
     </div>
 
-    <!-- RESPONSIVE WATERFALL TESTIMONIALS -->
-    <div class="waterfall">
-        <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Anna">
-            <div class="stars">⭐⭐⭐⭐⭐ 9.8/10</div>
-            <div class="student-name">Anna (RTU)</div>
-            <div class="student-quote">"Pabeidzu semestri bez stresa!"</div>
-        </div>
-        <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Jānis">
-            <div class="stars">⭐⭐⭐⭐⭐ 9.5/10</div>
-            <div class="student-name">Jānis (LU)</div>
-            <div class="student-quote">"AI plānotājs mainīja manu dzīvi."</div>
-        </div>
-        <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Līga">
-            <div class="stars">⭐⭐⭐⭐⭐ 10/10</div>
-            <div class="student-name">Līga (RSU)</div>
-            <div class="student-quote">"Perfekts studentiem Rīgā!"</div>
-        </div>
-        <div class="student-card">
-            <img src="https://images.unsplash.com/photo-1444080748397-f442aa95c9e5?w=45&h=45&fit=crop&crop=face" class="student-avatar" alt="Marta">
-            <div class="stars">⭐⭐⭐⭐⭐ 9.7/10</div>
-            <div class="student-name">Marta (LLU)</div>
-            <div class="student-quote">"Nezaudēju ne vienu deadline."</div>
-        </div>
-    </div>
-
-    <!-- HERO SECTION WITH BEAUTIFUL ANIMATION -->
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="free-badge">📓 FREE AI-powered time management for Students</div>
         <h1>ChronoFocus</h1>
@@ -321,7 +289,7 @@
     
     <!-- CONSOLES SECTION -->
     <section class="consoles section-container">
-        <h2 class="section-title">See Your ChronoFocus Console</h2>
+        <h2 class="section-title">See your ChronoFocus Console</h2>
         <div class="grid-container console-grid">
             <div class="console-item">
                 <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Daily Dashboard">
@@ -339,10 +307,38 @@
         <p class="consoles-subtitle">Powered by AI for smart prioritization. Designed for heavy course loads.</p>
     </section>
 
-    <!-- FEATURES SECTION -->
+    <!-- STUDENT FEEDBACKS SECTION - SINGLE ROW CENTERED -->
+    <section class="feedbacks section-container">
+        <h2 class="section-title small-title">Student Feedbacks</h2>
+        <div class="single-row-grid feedbacks-grid">
+            <div class="feedback-item">
+                <div class="feedback-stars">⭐⭐⭐⭐⭐ 9.8/10</div>
+                <div class="feedback-name">Anna (RTU)</div>
+                <div class="feedback-quote">"Pabeidzu semestri bez stresa!"</div>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-stars">⭐⭐⭐⭐⭐ 9.5/10</div>
+                <div class="feedback-name">Jānis (LU)</div>
+                <div class="feedback-quote">"AI plānotājs mainīja manu dzīvi."</div>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-stars">⭐⭐⭐⭐⭐ 10/10</div>
+                <div class="feedback-name">Līga (RSU)</div>
+                <div class="feedback-quote">"Perfekts studentiem Rīgā!"</div>
+            </div>
+            <div class="feedback-item">
+                <div class="feedback-stars">⭐⭐⭐⭐⭐ 9.7/10</div>
+                <div class="feedback-name">Marta (LLU)</div>
+                <div class="feedback-quote">"Nezaudēju ne vienu deadline."</div>
+            </div>
+        </div>
+        <p class="consoles-subtitle">Real students from Riga universities share their success stories.</p>
+    </section>
+
+    <!-- WHY STUDENTS LOVE IT SECTION - SINGLE ROW CENTERED -->
     <section class="features section-container">
-        <h2 class="section-title">Why Students Love It</h2>
-        <div class="grid-container features-grid">
+        <h2 class="section-title small-title">Why Students Love It</h2>
+        <div class="single-row-grid features-grid">
             <div class="feature-item">
                 <div class="feature-title zero">Zero Cost</div>
                 <div class="feature-text">Free forever for verified students. Just email signup.</div>
@@ -358,42 +354,14 @@
         </div>
     </section>
     
-    <!-- FOOTER WITH CONTACT ABOVE -->
+    <!-- FOOTER -->
     <footer>
         <div class="contact-us-footer" onclick="showContact()">Contact Us</div>
         <p>&copy; 2026 ChronoFocus | Riga, LV | <a href="#">Privacy</a> | Built for students by students</p>
     </footer>
 
     <script>
-        // CLOCK + CALENDAR ON LANDING
-        function updateClock() {
-            const now = new Date();
-            document.getElementById('time').textContent = now.toLocaleTimeString('lv-LV', {hour12: false, hour: '2-digit', minute: '2-digit'});
-            document.getElementById('date').textContent = now.toLocaleDateString('lv-LV', {weekday: 'short', year: 'numeric', month: 'short', day: 'numeric'});
-            
-            const calendar = document.getElementById('calendar');
-            const today = now.getDate();
-            const currentMonth = now.toLocaleString('lv-LV', { month: 'long' });
-            const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
-            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-            
-            let calendarHTML = `<div class="calendar-header">${currentMonth} ${now.getFullYear()}</div>`;
-            calendarHTML += '<div class="calendar-grid">';
-            
-            for(let i = 0; i < firstDay; i++) {
-                calendarHTML += '<div class="calendar-day"></div>';
-            }
-            for(let day = 1; day <= daysInMonth; day++) {
-                calendarHTML += `<div class="calendar-day ${day === today ? 'today' : ''}">${day}</div>`;
-            }
-            calendarHTML += '</div>';
-            calendar.innerHTML = calendarHTML;
-        }
-        
-        updateClock();
-        setInterval(updateClock, 60000);
-
-        // SCROLL BEHAVIOR - HIDE CLOCK/CALENDAR, SHOW LIGHT TEXT
+        // SCROLL BEHAVIOR - SHRINK DATE/TEXT ON SCROLL
         window.addEventListener('scroll', () => {
             const headerPanel = document.getElementById('clockPanel');
             if (window.scrollY > 100) {
@@ -404,11 +372,12 @@
         });
 
         function showContact() {
-            alert('💬 Contact Us!\n📧 hello@chronofocus.lv\n📱 +371 20 123 456\n\nRiga student team ready to help within 2 hours!');
+            alert('💬 Contact Us!\n📧 future@chronofocus.lv\n📱 +371 000 123 456\n\n Our Team ready to help within 24 hours!');
         }
     </script>
 </body>
 </html>
+
 
 
 
